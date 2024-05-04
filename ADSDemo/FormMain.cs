@@ -65,17 +65,38 @@ namespace ADSDemo
 
         private void btnRead_Click(object sender, EventArgs e)
         {
-            nudCounter.Value = _adsHelper.ReadValue<uint>("MAIN.nCounter");
+            try
+            {
+                nudCounter.Value = _adsHelper.ReadValue<uint>("MAIN.nCounter");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnWrite_Click(object sender, EventArgs e)
         {
-            _adsHelper.WriteValue<uint>("MAIN.nCounter", (uint)nudCounter.Value);
+            try
+            {
+                _adsHelper.WriteValue<uint>("MAIN.nCounter", (uint)nudCounter.Value);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void chkStartStop_CheckedChanged(object sender, EventArgs e)
         {
-            _adsHelper.WriteValue<bool>("MAIN.bStartStop", chkStartStop.Checked);
+            try
+            {
+                _adsHelper.WriteValue<bool>("MAIN.bStartStop", chkStartStop.Checked);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
